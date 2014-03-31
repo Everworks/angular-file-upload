@@ -51,6 +51,7 @@ When files are selected or dropped into the component, one or more filters are a
 - **isHTML5** `{Boolean}`: `true` if uploader is html5-uploader. Readonly.
 - **isUploading** `{Boolean}`: `true` if an upload is in progress
 - **queueLimit** `{Number}` : maximum count of files
+- **withCredentials** `{Boolean}` : if set withCredentials flag on xhr object (needed for CORS upload work)
 
 #### Methods
 

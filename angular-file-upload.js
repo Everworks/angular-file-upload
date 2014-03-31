@@ -1,5 +1,5 @@
 /*
- Angular File Upload v0.4.0
+ Angular File Upload v0.4.1
  https://github.com/nervgh/angular-file-upload
 */
 (function(angular, factory) {
@@ -103,7 +103,8 @@ app.factory('$fileUploader', [ '$compile', '$rootScope', '$http', '$window', fun
             isUploading: false,
             queueLimit: Number.MAX_VALUE,
             _nextIndex: 0,
-            _timestamp: Date.now()
+            _timestamp: Date.now(),
+            withCredentials: false
         }, params);
 
         // add default filters
@@ -407,6 +408,8 @@ app.factory('$fileUploader', [ '$compile', '$rootScope', '$http', '$window', fun
             });
 
             form.append(item.alias, item.file);
+
+            xhr.withCredentials = this.withCredentials;
 
             xhr.upload.onprogress = function (event) {
                 var progress = event.lengthComputable ? event.loaded * 100 / event.total : 0;
