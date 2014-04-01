@@ -36,7 +36,7 @@ app.factory('$fileUploader', [ '$compile', '$rootScope', '$http', '$window', fun
         this.filters.unshift(this._queueLimitFilter);
 
         this.scope.$on('file:add', function (event, items, options) {
-            event.stopPropagation();
+            if (event.stopPropagation) event.stopPropagation();
             this.addToQueue(items, options);
         }.bind(this));
 
