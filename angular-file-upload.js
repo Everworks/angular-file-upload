@@ -1,6 +1,6 @@
 /*
- Angular File Upload v0.4.1
- https://github.com/nervgh/angular-file-upload
+ Angular File Upload v0.4.2
+ https://github.com/Everworks/angular-file-upload
 */
 (function(angular, factory) {
     if (typeof define === 'function' && define.amd) {
@@ -112,7 +112,7 @@ app.factory('$fileUploader', [ '$compile', '$rootScope', '$http', '$window', fun
         this.filters.unshift(this._queueLimitFilter);
 
         this.scope.$on('file:add', function (event, items, options) {
-            event.stopPropagation();
+            if (event.stopPropagation) event.stopPropagation();
             this.addToQueue(items, options);
         }.bind(this));
 
