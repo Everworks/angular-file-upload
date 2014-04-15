@@ -1,5 +1,5 @@
 /*
- Angular File Upload v0.4.2
+ Angular File Upload v0.4.4
  https://github.com/Everworks/angular-file-upload
 */
 (function(angular, factory) {
@@ -409,8 +409,6 @@ app.factory('$fileUploader', [ '$compile', '$rootScope', '$http', '$window', fun
 
             form.append(item.alias, item.file);
 
-            xhr.withCredentials = this.withCredentials;
-
             xhr.upload.onprogress = function (event) {
                 var progress = event.lengthComputable ? event.loaded * 100 / event.total : 0;
                 that.trigger('in:progress', item, Math.round(progress));
@@ -434,6 +432,8 @@ app.factory('$fileUploader', [ '$compile', '$rootScope', '$http', '$window', fun
             };
 
             xhr.open(item.method, item.url, true);
+
+            xhr.withCredentials = this.withCredentials;
 
             angular.forEach(item.headers, function (value, name) {
                 xhr.setRequestHeader(name, value);
